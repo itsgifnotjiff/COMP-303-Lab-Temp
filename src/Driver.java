@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.Iterator;
 
 /**
  * Utility class with a driver program and some 
@@ -15,6 +18,10 @@ public final class Driver
 
     private Driver() {}
 
+
+
+
+
     /**
      * @param pArgs Not used
      */
@@ -22,5 +29,40 @@ public final class Driver
     {
         Bookstore bookstore1 = new Bookstore("Paragraph");
         Bookstore bookstore2 = new Bookstore("The Word");
+//        System.out.println(Books.length);
+        for (Book i: Books)
+        {
+            bookstore1.updateBookToInventory(i,1);
+        }
+
+//        System.out.println("Quantity of Book 1 : " + bookstore1.quantityOfBook(BOOK1));
+
+//        for (Book book : bookstore1.getInventory().keySet())
+//        {
+//            String author = book.getAuthor();
+//            String name = book.getTitle();
+//            System.out.println(author + " " + name);
+//        }
+
+        bookstore1.updateBookToInventory(BOOK1,3);
+
+//        System.out.println("Quantity of Book 1 : " + bookstore1.quantityOfBook(BOOK1));
+
+        bookstore1.sortByKeys();
+
+        for (Book book : bookstore1.getInventory().keySet())
+        {
+            String author = book.getAuthor();
+            String name = book.getTitle();
+            System.out.println(author + " : " + name);
+        }
+
+
+//        Iterator it = bookstore1.getInventory().keySet().iterator();
+//        System.out.println("UnSorted Map");
+//        while(it.hasNext()) {
+//            System.out.println(bookstore1.getInventory().get(it.next()));
+//        }
+
     }
 }

@@ -2,7 +2,7 @@
 /**
  * A Book Item:
  */
-public class Book
+public class Book implements Comparable<Book>
 {
     private final String aTitle;
     private final String aAuthor;
@@ -16,8 +16,8 @@ public class Book
      * @param pType   The category of the book
      * @param pPrice  The price of the item in cents
      */
-    public Book(String pTitle, String pAuthor, BookType pType, int pPrice)
-    {
+    public Book(String pTitle, String pAuthor, BookType pType, int pPrice) {
+        assert pTitle != null && pAuthor!=null && pType!=null && pPrice>=0;
         aTitle = pTitle;
         aAuthor = pAuthor;
         aType = pType;
@@ -55,4 +55,20 @@ public class Book
     {
         return aPrice;
     }
+
+
+    //Lab 1
+    @Override
+    public int compareTo(Book b2){
+        int PriceCompare = b2.getPrice();
+        return this.getPrice() - PriceCompare;
+    }
+
+    @Override
+    public String toString(){
+        String temp = this.aTitle +" "+ this.aAuthor +" "+ this.aType +" "+this.getPrice();
+        return temp;
+    }
+
+
 }

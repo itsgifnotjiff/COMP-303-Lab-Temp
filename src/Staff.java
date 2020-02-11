@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 /**
  * Represents a staff member working in a bookstore
@@ -29,6 +30,14 @@ public class Staff {
     public void changeBookstore(Bookstore pStore)
     {
         aStore = pStore;
+    }
+
+    //Lab 1
+    public void recommendLast(){
+        Book pBook = aStore.returnLastBook();
+        assert(!pBook.equals(null));
+        aBookRecommendation.add(pBook);
+
     }
 
 
