@@ -37,9 +37,52 @@ public class Staff {
         Book pBook = aStore.returnLastBook();
         assert(!pBook.equals(null));
         aBookRecommendation.add(pBook);
+    }
+    //Alternative
+    //this relies on the toString method from the book class
+//    public void recommendLast(){
+//        System.out.println(aStore.returnLastAdded());
+//    }
 
+
+    //Lab 2
+    public boolean dupRecommendatio(){
+        for(Book b: aBookRecommendation){
+            int index = aBookRecommendation.indexOf(b);
+            return (index == aBookRecommendation.lastIndexOf(b));
+        }
+        return false;
     }
 
+
+
+    private boolean listEmpty(){
+        return aBookRecommendation.isEmpty();
+    }
+
+    private static Book getFirst(List<Book> pList){
+        Book temp = pList.get(0);
+        return temp;
+    }
+
+    /**
+     * If the attribute aBookRecommendation is empty
+     * we obtain the list of books from the bookstore
+     * @pre List of books is not empty
+     * add to the aBookRecommendation list the first book
+     * in the list returned by the BookStore class
+     *
+     */
+    public void updateRecommendation() {
+        if (listEmpty()) {
+            List<Book> recommendations = aStore.getList();
+            assert !recommendations.isEmpty();
+            Book temp = getFirst(recommendations);
+
+            aBookRecommendation.add(temp);
+
+        }
+    }
 
 
 

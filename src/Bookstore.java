@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.util.Iterator;
 
@@ -10,6 +9,7 @@ public class Bookstore
     private final String aName; // Unique
     private final HashMap<Book, Integer> aInventory = new HashMap<>();
     private int itemNumber = 0;
+    //private Book lastAdded;
 
     /**
      * Creates a new bookstore with no books in it,
@@ -30,11 +30,25 @@ public class Bookstore
     }
 
 
-    //Lab 1
+
+
+    //Lab 1 + Practice (Try-Catch)
     public void addBook(Book aBook){
-        Book passThrough = new Book(aBook.getTitle(), aBook.getAuthor(), aBook.getType(), aBook.getPrice());
-        aInventory.put(passThrough, itemNumber);
-        itemNumber++;
+        try {
+            Book passThrough = new Book(aBook.getTitle(), aBook.getAuthor(), aBook.getType(), aBook.getPrice());
+            aInventory.put(passThrough, itemNumber);
+            itemNumber++;
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        //for the returnLastAdded function
+        //lastAdded = passThrough;
+    }
+
+    //Practice
+    //remove a book from the hashmap by passing it as an argument
+    public void removeBook(Book pBook){
+        aInventory.remove(pBook);
     }
 
     //Lab 1
@@ -69,5 +83,30 @@ public class Bookstore
         Book temp = new Book(capturedBook.getTitle(), capturedBook.getAuthor(), capturedBook.getType(), capturedBook.getPrice());
         return temp;
     }
+
+//Alternative
+//    public Book returnLastAdded(){
+//        Book temp = new Book(lastAdded.getTitle(), lastAdded.getAuthor(), lastAdded.getType(), lastAdded.getPrice());
+//        return temp;
+//    }
+
+
+    //Lab 2
+    public List<Book> getList(){
+        List<Book> holder = new ArrayList<Book>();
+        Iterator iter = (Iterator) aInventory.entrySet();
+        while(iter.hasNext()){
+
+            Map.Entry element = (Map.Entry)iter.next();
+            Book aBook = (Book)element.getKey();
+
+            Book temp = new Book(aBook.getTitle(), aBook.getAuthor(), aBook.getType(), aBook.getPrice());
+            holder.add(temp);
+
+        }
+        return holder;
+    }
+
+
 
 }

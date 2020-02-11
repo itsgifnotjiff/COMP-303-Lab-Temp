@@ -24,6 +24,7 @@ public class Book implements Comparable<Book>
         aPrice = pPrice;
     }
 
+
     /**
      * @return The title of the book
      */
@@ -45,7 +46,7 @@ public class Book implements Comparable<Book>
      */
     public BookType getType()
     {
-        return aType;
+        return this.aType;
     }
 
     /**
@@ -66,9 +67,17 @@ public class Book implements Comparable<Book>
 
     @Override
     public String toString(){
-        String temp = this.aTitle +" "+ this.aAuthor +" "+ this.aType +" "+this.getPrice();
+        String temp = this.getTitle() +" "+ this.getAuthor() +" "+ this.getType() +" "+this.getPrice();
         return temp;
     }
 
+    //Practice
+    public boolean equals(Book pBook){
+        if(pBook == null) return false;
+        if(this == pBook) return true;
+        if(this.hashCode() == pBook.hashCode()) return true;
+        return this.getTitle().equals(pBook.getTitle()) && this.getAuthor().equals(pBook.getAuthor())
+                && this.getType().equals(pBook.getType()) && this.getPrice() == pBook.getPrice();
+    }
 
 }

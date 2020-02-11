@@ -1,13 +1,11 @@
-public class BestSellingBook implements Comparable<Book>
-{
-//    private final String aTitle;
-//    private final String aAuthor;
-//    private final BookType aType;
-//    private final int aPrice; // In cents: 100 = one dollar
+public class BestSellingBook {
 
-    public Book() {}
+    private static final BestSellingBook bestSellingBook = new BestSellingBook();
 
+    private BestSellingBook(){}
 
-
+    public static BestSellingBook getBestSellingBook(){
+        return bestSellingBook;
+    }
 
 }
