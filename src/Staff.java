@@ -17,7 +17,8 @@ public class Staff {
      * @param pName A unique identifier for the staff.
      * @param pStore  The bookstore the staff current works at.
      */
-    public Staff(String pName, Bookstore pStore) {
+    public Staff(String pName, Bookstore pStore)
+    {
         aName = pName;
         aStore = pStore;
         aBookRecommendation = new ArrayList<>();
@@ -32,8 +33,8 @@ public class Staff {
         aStore = pStore;
     }
 
-    //Lab 1
-    public void recommendLast(){
+    public void recommendLast()
+    {
         Book pBook = aStore.returnLastBook();
         assert(!pBook.equals(null));
         aBookRecommendation.add(pBook);
@@ -44,23 +45,23 @@ public class Staff {
 //        System.out.println(aStore.returnLastAdded());
 //    }
 
-
-    //Lab 2
-    public boolean dupRecommendatio(){
-        for(Book b: aBookRecommendation){
+    public boolean duplicateRecommendation()
+    {
+        for(Book b: aBookRecommendation)
+        {
             int index = aBookRecommendation.indexOf(b);
             return (index == aBookRecommendation.lastIndexOf(b));
         }
         return false;
     }
 
-
-
-    private boolean listEmpty(){
+    private boolean listEmpty()
+    {
         return aBookRecommendation.isEmpty();
     }
 
-    private static Book getFirst(List<Book> pList){
+    private static Book getFirst(List<Book> pList)
+    {
         Book temp = pList.get(0);
         return temp;
     }
@@ -73,14 +74,14 @@ public class Staff {
      * in the list returned by the BookStore class
      *
      */
-    public void updateRecommendation() {
-        if (listEmpty()) {
+    public void updateRecommendation()
+    {
+        if (listEmpty())
+        {
             List<Book> recommendations = aStore.getList();
             assert !recommendations.isEmpty();
-            Book temp = getFirst(recommendations);
-
-            aBookRecommendation.add(temp);
-
+            Book firstBook = getFirst(recommendations);
+            aBookRecommendation.add(firstBook);
         }
     }
 
